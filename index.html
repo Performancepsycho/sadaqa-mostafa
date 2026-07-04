@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0e4d3c" />
+  <title>صدقة جارية — لروح مصطفى أبو الدهب</title>
+  <meta name="description" content="صفحة صدقة جارية لروح المرحوم مصطفى أبو الدهب. اقرأ الأدعية والأذكار وسور القرآن، واجعل ثوابها في ميزان حسناته." />
+
+  <!-- Open Graph (لظهور جميل عند مشاركة اللينك على واتساب/فيسبوك) -->
+  <meta property="og:title" content="صدقة جارية — لروح مصطفى أبو الدهب" />
+  <meta property="og:description" content="اقرأ الأدعية والأذكار وسور القرآن، واجعل ثوابها صدقة جارية في ميزان حسناته. رحمه الله." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Amiri+Quran&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%95%8C%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- شريط علوي -->
+  <header class="topbar">
+    <button class="icon-btn back-btn" id="backBtn" aria-label="رجوع" hidden>
+      <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M9.29 15.88 13.17 12 9.29 8.12a1 1 0 0 1 1.42-1.41l4.58 4.58a1 1 0 0 1 0 1.42l-4.58 4.58a1 1 0 0 1-1.42-1.41Z"/></svg>
+    </button>
+    <div class="brand" id="brandTitle">صدقة جارية</div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="themeBtn" aria-label="الوضع الليلي">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12.74 2.02a1 1 0 0 0-1.1 1.32A7 7 0 1 0 20.66 12.4a1 1 0 0 0-1.32-1.1 5 5 0 0 1-6.6-6.6 1 1 0 0 0 0-.68Z"/></svg>
+      </button>
+      <button class="icon-btn" id="shareBtn" aria-label="مشاركة">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18 16.08a2.9 2.9 0 0 0-2 .82l-7-4.06a3 3 0 0 0 0-1.68l7-4.06a3 3 0 1 0-1-2.1 3 3 0 0 0 .05.55L8.04 9.6a3 3 0 1 0 0 4.8l7.05 4.06a3 3 0 1 0 2.91-2.38Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="app">
+
+    <!-- ============ الصفحة الرئيسية ============ -->
+    <section class="view view-home is-active" id="view-home">
+      <div class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="lantern" aria-hidden="true">🕌</div>
+        <p class="hero-kicker">صدقة جارية</p>
+        <h1 class="hero-name">مصطفى أبو الدهب</h1>
+        <p class="hero-sub">رحمه الله وأسكنه فسيح جناته</p>
+        <p class="hero-verse">﴿ وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا ۚ بَلْ أَحْيَاءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ ﴾</p>
+        <p class="hero-note">كل حرفٍ تقرأه هنا بنيّةٍ خالصة، ثوابه صدقة جارية في ميزان حسناته. ابدأ بالنية، ثم اقرأ.</p>
+      </div>
+
+      <nav class="menu" aria-label="الأقسام">
+        <button class="menu-card" data-go="duaa">
+          <span class="menu-ic">🤲</span>
+          <span class="menu-txt">
+            <span class="menu-title">أدعية للمتوفّى</span>
+            <span class="menu-desc">ادعُ له دعوة بعد دعوة</span>
+          </span>
+          <span class="menu-arrow">‹</span>
+        </button>
+
+        <button class="menu-card" data-go="azkar">
+          <span class="menu-ic">📿</span>
+          <span class="menu-txt">
+            <span class="menu-title">الأذكار والتسبيح</span>
+            <span class="menu-desc">سبّح واحتسب الأجر له</span>
+          </span>
+          <span class="menu-arrow">‹</span>
+        </button>
+
+        <button class="menu-card" data-go="surah" data-surah="1">
+          <span class="menu-ic">📖</span>
+          <span class="menu-txt">
+            <span class="menu-title">سورة الفاتحة</span>
+            <span class="menu-desc">اقرأ الفاتحة على روحه</span>
+          </span>
+          <span class="menu-arrow">‹</span>
+        </button>
+
+        <button class="menu-card" data-go="surah" data-surah="36">
+          <span class="menu-ic">🌙</span>
+          <span class="menu-txt">
+            <span class="menu-title">سورة يس</span>
+            <span class="menu-desc">قلب القرآن</span>
+          </span>
+          <span class="menu-arrow">‹</span>
+        </button>
+
+        <button class="menu-card" data-go="surah" data-surah="2">
+          <span class="menu-ic">✨</span>
+          <span class="menu-txt">
+            <span class="menu-title">سورة البقرة</span>
+            <span class="menu-desc">تطرد الشيطان من البيت</span>
+          </span>
+          <span class="menu-arrow">‹</span>
+        </button>
+      </nav>
+
+      <p class="home-foot">اللهم اجعل هذا العمل خالصًا لوجهك، وتقبّله لروح مصطفى وكل موتى المسلمين.</p>
+    </section>
+
+    <!-- ============ الأدعية ============ -->
+    <section class="view view-duaa" id="view-duaa">
+      <div class="reader">
+        <div class="reader-count" id="duaaCount"></div>
+        <div class="card duaa-card" id="duaaCard">
+          <span class="card-quote-open" aria-hidden="true">﴾</span>
+          <p class="duaa-text" id="duaaText"></p>
+          <span class="card-quote-close" aria-hidden="true">﴿</span>
+        </div>
+        <div class="reader-hint" id="duaaHint">اقرأ الدعاء بقلبك ثم اضغط «التالي»</div>
+        <div class="reader-nav">
+          <button class="btn btn-ghost" id="duaaPrev">السابق</button>
+          <button class="btn btn-primary" id="duaaNext">التالي ›</button>
+        </div>
+        <div class="dots" id="duaaDots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ============ الأذكار ============ -->
+    <section class="view view-azkar" id="view-azkar">
+      <div class="azkar-intro">اضغط على الدائرة مع كل تسبيحة — والأجر لروح مصطفى بإذن الله.</div>
+      <div class="azkar-list" id="azkarList"></div>
+    </section>
+
+    <!-- ============ السور ============ -->
+    <section class="view view-surah" id="view-surah">
+      <div class="surah-head" id="surahHead">
+        <h2 class="surah-name" id="surahName"></h2>
+        <div class="surah-meta" id="surahMeta"></div>
+        <div class="bismillah" id="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      </div>
+      <div class="surah-body" id="surahBody">
+        <div class="loader" id="surahLoader">
+          <div class="spinner"></div>
+          <p>يُحمّل النص الكريم…</p>
+        </div>
+      </div>
+      <button class="to-top" id="toTop" aria-label="أعلى الصفحة" hidden>↑</button>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

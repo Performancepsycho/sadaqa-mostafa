@@ -1,0 +1,309 @@
+/* ===================== المتغيرات والثيم ===================== */
+:root{
+  --bg:#f4eede;
+  --bg-2:#efe6d2;
+  --surface:#fffdf7;
+  --surface-2:#faf4e6;
+  --green:#0e4d3c;
+  --green-2:#1a6b52;
+  --green-soft:#e5efe9;
+  --gold:#b1832d;
+  --gold-2:#caa042;
+  --ink:#233029;
+  --muted:#7c8a80;
+  --line:#e6dcc6;
+  --shadow:0 14px 40px -18px rgba(14,77,60,.45);
+  --shadow-sm:0 6px 18px -10px rgba(14,77,60,.4);
+  --radius:22px;
+  --maxw:640px;
+}
+html[data-theme="dark"]{
+  --bg:#0d1712;
+  --bg-2:#0a120e;
+  --surface:#14231c;
+  --surface-2:#0f1c16;
+  --green:#e7f3ec;
+  --green-2:#7dc9a9;
+  --green-soft:#183025;
+  --gold:#d9b45a;
+  --gold-2:#e7c976;
+  --ink:#e9e6d8;
+  --muted:#93a89a;
+  --line:#23342b;
+  --shadow:0 16px 40px -20px rgba(0,0,0,.7);
+  --shadow-sm:0 8px 20px -12px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:
+    radial-gradient(1200px 600px at 50% -10%, var(--bg-2), transparent 60%),
+    var(--bg);
+  color:var(--ink);
+  font-family:'Tajawal',system-ui,-apple-system,'Segoe UI',sans-serif;
+  line-height:1.7;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition:background .4s ease,color .4s ease;
+}
+
+/* زخرفة خلفية خفيفة */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='104' viewBox='0 0 60 104'%3E%3Cpath fill='none' stroke='%230e4d3c' stroke-width='1' opacity='.05' d='M30 0l30 17v35L30 69 0 52V17zM30 35l30 17v35L30 104 0 87V52z'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+
+/* ===================== الشريط العلوي ===================== */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:8px;
+  padding:12px 16px;
+  padding-top:calc(12px + env(safe-area-inset-top));
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  font-family:'Aref Ruqaa',serif;
+  font-weight:700;
+  color:var(--green-2);
+  font-size:1.25rem;
+  flex:1;text-align:center;
+  letter-spacing:.3px;
+}
+.topbar-actions{display:flex;gap:4px}
+.icon-btn{
+  display:grid;place-items:center;
+  width:40px;height:40px;border:none;border-radius:12px;
+  background:transparent;color:var(--green-2);
+  cursor:pointer;transition:background .2s,transform .1s;
+}
+.icon-btn:hover{background:var(--green-soft)}
+.icon-btn:active{transform:scale(.92)}
+.back-btn[hidden]{display:none}
+
+/* ===================== نظام العرض ===================== */
+main#app{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 18px 60px}
+.view{display:none;animation:fade .45s ease}
+.view.is-active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===================== الهيرو ===================== */
+.hero{
+  position:relative;text-align:center;
+  padding:38px 20px 30px;margin-top:14px;
+  background:linear-gradient(180deg, var(--surface), var(--surface-2));
+  border:1px solid var(--line);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle, rgba(202,160,66,.28), transparent 70%);
+  pointer-events:none;
+}
+.lantern{font-size:2.6rem;line-height:1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.15))}
+.hero-kicker{
+  margin:12px 0 6px;font-weight:700;letter-spacing:4px;font-size:.78rem;
+  color:var(--gold);text-transform:uppercase;
+}
+.hero-name{
+  font-family:'Aref Ruqaa',serif;font-weight:700;
+  font-size:clamp(2.2rem,9vw,3.1rem);
+  margin:2px 0 6px;color:var(--green);line-height:1.25;
+}
+.hero-sub{margin:0 0 18px;color:var(--muted);font-size:1.02rem}
+.hero-verse{
+  font-family:'Amiri Quran',serif;
+  font-size:clamp(1.05rem,4.4vw,1.3rem);
+  color:var(--green-2);line-height:2.2;
+  margin:0 auto 16px;max-width:34ch;
+}
+.hero-note{
+  font-size:.94rem;color:var(--muted);max-width:40ch;margin:0 auto;
+  border-top:1px dashed var(--line);padding-top:16px;
+}
+
+/* ===================== القائمة ===================== */
+.menu{display:flex;flex-direction:column;gap:12px;margin:22px 0 8px}
+.menu-card{
+  display:flex;align-items:center;gap:14px;
+  width:100%;text-align:right;cursor:pointer;
+  padding:16px 18px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  transition:transform .15s ease, box-shadow .2s ease, border-color .2s;
+  font-family:inherit;color:inherit;
+}
+.menu-card:hover{transform:translateY(-2px);border-color:var(--gold-2)}
+.menu-card:active{transform:scale(.985)}
+.menu-ic{
+  font-size:1.6rem;width:52px;height:52px;flex:none;
+  display:grid;place-items:center;border-radius:16px;
+  background:var(--green-soft);
+}
+.menu-txt{flex:1;display:flex;flex-direction:column;gap:2px}
+.menu-title{font-weight:700;font-size:1.12rem;color:var(--green)}
+.menu-desc{font-size:.86rem;color:var(--muted)}
+.menu-arrow{font-size:1.5rem;color:var(--gold);font-weight:700}
+.home-foot{
+  text-align:center;color:var(--muted);font-size:.9rem;
+  margin:26px auto 0;max-width:38ch;line-height:2;
+}
+
+/* ===================== قارئ الأدعية ===================== */
+.reader{padding:22px 0 10px;text-align:center}
+.reader-count{
+  font-family:'Amiri',serif;font-weight:700;
+  color:var(--gold);font-size:1.15rem;margin-bottom:14px;letter-spacing:1px;
+}
+.card{
+  position:relative;
+  background:linear-gradient(180deg,var(--surface),var(--surface-2));
+  border:1px solid var(--line);
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  padding:40px 26px;
+  min-height:230px;
+  display:flex;align-items:center;justify-content:center;
+}
+.duaa-card::after{
+  content:"";position:absolute;inset:8px;border-radius:20px;
+  border:1px solid var(--gold-2);opacity:.28;pointer-events:none;
+}
+.card-quote-open,.card-quote-close{
+  position:absolute;font-family:'Amiri Quran',serif;
+  color:var(--gold-2);opacity:.5;font-size:2rem;
+}
+.card-quote-open{top:12px;right:16px}
+.card-quote-close{bottom:6px;left:16px}
+.duaa-text{
+  font-family:'Amiri',serif;font-size:clamp(1.35rem,5.6vw,1.7rem);
+  line-height:2.35;color:var(--ink);margin:0;
+}
+.reader-hint{color:var(--muted);font-size:.9rem;margin:18px 0 16px}
+.reader-nav{display:flex;gap:12px;justify-content:center}
+.btn{
+  font-family:inherit;font-weight:700;font-size:1.02rem;
+  padding:13px 26px;border-radius:16px;cursor:pointer;border:1px solid transparent;
+  transition:transform .12s,filter .2s,background .2s,opacity .2s;
+}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow-sm);min-width:130px}
+html[data-theme="dark"] .btn-primary{color:#0d1712;background:var(--green-2)}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--green-2);border-color:var(--line)}
+.btn-ghost:hover{background:var(--green-soft)}
+.btn:disabled{opacity:.35;cursor:default;transform:none}
+.dots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:22px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--line);transition:.25s}
+.dot.on{background:var(--gold);transform:scale(1.35)}
+
+/* ===================== الأذكار ===================== */
+.azkar-intro{
+  text-align:center;color:var(--muted);font-size:.94rem;
+  margin:22px auto 18px;max-width:38ch;
+}
+.azkar-list{display:flex;flex-direction:column;gap:14px}
+.zikr{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);
+  padding:20px 20px 22px;text-align:center;
+  transition:border-color .3s;
+}
+.zikr.done{border-color:var(--gold-2);background:var(--surface-2)}
+.zikr-text{
+  font-family:'Amiri',serif;font-size:clamp(1.2rem,5vw,1.45rem);
+  line-height:2.2;color:var(--ink);margin:0 0 16px;
+}
+.counter{
+  position:relative;width:104px;height:104px;margin:0 auto;
+  border:none;background:none;cursor:pointer;
+  display:grid;place-items:center;font-family:inherit;
+}
+.counter svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.counter .ring-bg{stroke:var(--line)}
+.counter .ring-fg{stroke:var(--gold);transition:stroke-dashoffset .35s ease}
+.counter .num{
+  font-family:'Amiri',serif;font-weight:700;font-size:1.7rem;color:var(--green);
+  z-index:1;line-height:1;
+}
+.counter .target{font-size:.8rem;color:var(--muted);z-index:1;margin-top:2px}
+.counter:active{transform:scale(.94)}
+.zikr.done .num{color:var(--gold)}
+.zikr-check{color:var(--gold);font-weight:700;font-size:.9rem;height:1.2em;margin-top:8px}
+
+/* ===================== السور ===================== */
+.surah-head{text-align:center;padding:26px 10px 8px}
+.surah-name{
+  font-family:'Aref Ruqaa',serif;font-size:clamp(1.8rem,7vw,2.4rem);
+  color:var(--green);margin:0 0 6px;
+}
+.surah-meta{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.bismillah{
+  font-family:'Amiri Quran',serif;font-size:clamp(1.3rem,5.4vw,1.7rem);
+  color:var(--gold);padding:14px 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.surah-body{
+  font-family:'Amiri Quran',serif;
+  font-size:clamp(1.4rem,5.8vw,1.75rem);
+  line-height:2.7;text-align:justify;text-align-last:center;
+  color:var(--ink);
+  padding:26px 18px 20px;margin-top:16px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:24px;box-shadow:var(--shadow-sm);
+}
+.ayah{transition:background .3s}
+.ayah-num{
+  font-family:'Amiri',serif;font-size:.62em;color:var(--green-2);
+  margin:0 2px;font-weight:700;white-space:nowrap;
+}
+.ayah-num::before{content:"﴿"}
+.ayah-num::after{content:"﴾"}
+
+.loader{text-align:center;color:var(--muted);padding:50px 0;font-family:'Tajawal',sans-serif;font-size:1rem}
+.spinner{
+  width:40px;height:40px;margin:0 auto 16px;border-radius:50%;
+  border:3px solid var(--line);border-top-color:var(--gold);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.error-box{text-align:center;color:var(--muted);padding:40px 10px}
+.error-box .btn{margin-top:16px}
+
+.to-top{
+  position:fixed;bottom:22px;left:22px;z-index:15;
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--line);
+  background:var(--surface);color:var(--green-2);font-size:1.3rem;cursor:pointer;
+  box-shadow:var(--shadow);transition:transform .15s,opacity .3s;
+}
+.to-top:active{transform:scale(.9)}
+.to-top[hidden]{display:none}
+
+/* ===================== التنبيه (توست) ===================== */
+.toast{
+  position:fixed;left:50%;bottom:30px;transform:translateX(-50%) translateY(20px);
+  background:var(--green);color:#fff;padding:12px 22px;border-radius:14px;
+  font-size:.95rem;box-shadow:var(--shadow);z-index:50;opacity:0;
+  transition:opacity .3s,transform .3s;pointer-events:none;
+}
+html[data-theme="dark"] .toast{background:var(--green-2);color:#0d1712}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media (min-width:560px){
+  .reader-nav .btn{min-width:150px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;transition-duration:.05s!important}
+}
